@@ -2,10 +2,12 @@ import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Index from "./pages/Index";
 import Create from "./pages/Create";
 import View from "./pages/View";
+import Store from "./store/Store";
 
 function App() {
   return (
-    <div>
+    //store sera el contexto para todas las demas rutas
+    <Store>
       <BrowserRouter>
         <Routes>
           //ruta principal que mostrara los libros
@@ -16,7 +18,7 @@ function App() {
           <Route path="view/:bookId" element={<View />} />
         </Routes>
       </BrowserRouter>
-    </div>
+    </Store>
   );
 }
 
