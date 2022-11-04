@@ -4,7 +4,7 @@ import Layout from "../components/Layout";
 import { useAppContext } from "../store/Store";
 
 const View = () => {
-  const [item, setItem] = useState({});
+  const [item, setItem] = useState(null);
   //useParams me devuelve las rutas que están identificadas
   const params = useParams();
 
@@ -12,11 +12,24 @@ const View = () => {
 
   useEffect(() => {
     //me devuelve todo el elemento
-    const book = store.getItems(params.bookId);
+    const book = store.getItem(params.bookId);
     setItem(book);
   }, []);
 
-  return <Layout>View</Layout>;
+  if (!item) {
+    return <Layout>item not found</Layout>;
+  }
+
+  return (
+    <Layout>
+      <h2>{item?.title}</h2>
+      <div>{item?.cover ? <img src={item.cover} width="400" /> : ""}</div>
+      <div>{item?.author}</div>
+      <div>{item?.intro}</div>
+      <div>{item?.completed ? "Leido" : "Por terminar"}</div>
+      <div>{item?.review}</div>
+    </Layout>
+  );
 };
 
 export default View;

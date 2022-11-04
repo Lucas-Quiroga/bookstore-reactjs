@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAppContext } from "../store/Store";
 import Layout from "../components/Layout";
+import { useNavigate } from "react-router-dom";
 //link nos permite generar un hipervinculo para navegar entre rutas
 // import { Link } from "react-router-dom";
 
@@ -15,6 +16,9 @@ function Create() {
 
   //llamamos desde store.jsx a la funcion para obtener el contexto
   const store = useAppContext();
+
+  //funcion que cuando cree un nuevo libro me pida una ruta para redirigir
+  const navigate = useNavigate();
 
   function handleChange(e) {
     const name = e.target.name;
@@ -72,6 +76,9 @@ function Create() {
 
     //TODO: mandar a registrar el libro mediante el contexto "store"
     store.createItem(newBook);
+
+    //para que nos redirija a la pagina principal si está todo ok
+    navigate("/");
   };
 
   return (
