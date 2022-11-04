@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { useAppContext } from "../store/Store";
-
+import Layout from "../components/Layout";
 //link nos permite generar un hipervinculo para navegar entre rutas
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 function Create() {
   // estados de creación
@@ -75,10 +75,9 @@ function Create() {
   };
 
   return (
-    <div>
+    <Layout>
       {/* usamos un hipervinculo para navegar a otra pagina sin perder lo que el
       estado está guardando */}
-      <Link to="/">Home</Link>
       <form onSubmit={handleSubmit}>
         <div>
           <div>Title</div>
@@ -140,7 +139,7 @@ function Create() {
 
         <input type="submit" value="Register book" />
       </form>
-    </div>
+    </Layout>
   );
 }
 
