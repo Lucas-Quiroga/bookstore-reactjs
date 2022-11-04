@@ -1,5 +1,5 @@
 //store va a tener toda la informacion para manejar de manera global
-import React, { createContext, useContext, useEffect, useState } from "react";
+import React, { createContext, useContext, useState } from "react";
 
 // definición de nuestro contexto
 const AppContext = createContext({

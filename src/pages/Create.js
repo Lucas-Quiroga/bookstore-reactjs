@@ -20,6 +20,40 @@ function Create() {
   //funcion que cuando cree un nuevo libro me pida una ruta para redirigir
   const navigate = useNavigate();
 
+  const inputStyle = {
+    formContainer: {
+      width: "400px",
+      margin: "0 auto",
+    },
+    container: {
+      display: "flex",
+      flexDirection: "column",
+      gap: "5px",
+      margin: "15px 0",
+    },
+    title: {
+      fontSize: "16px",
+      textAling: "left",
+      color: "white",
+    },
+    input: {
+      padding: "10px",
+      borderRadius: "5px",
+      fontSize: "16px",
+    },
+  };
+
+  const buttonStyle = {
+    padding: "15px 20px",
+    minWidth: "200px",
+    border: "none",
+    borderRadius: "5px",
+    backgroundColor: "#1e9638",
+    color: "white",
+    fontWeigth: "bolder",
+    fontSize: "18px",
+  };
+
   function handleChange(e) {
     const name = e.target.name;
     const value = e.target.value;
@@ -85,66 +119,76 @@ function Create() {
     <Layout>
       {/* usamos un hipervinculo para navegar a otra pagina sin perder lo que el
       estado está guardando */}
-      <form onSubmit={handleSubmit}>
-        <div>
-          <div>Title</div>
+      <form onSubmit={handleSubmit} style={inputStyle.formContainer}>
+        <div style={inputStyle.container}>
+          <div style={inputStyle.title}>Title</div>
           <input
             type="text"
             name="title"
             onChange={handleChange}
             value={title}
+            style={inputStyle.input}
           />
         </div>
 
-        <div>
-          <div>Author</div>
+        <div style={inputStyle.container}>
+          <div style={inputStyle.title}>Author</div>
           <input
             type="text"
             name="author"
             onChange={handleChange}
             value={author}
+            style={inputStyle.input}
           />
         </div>
 
-        <div>
-          <div>Cover</div>
-          <input type="file" name="cover" onChange={handleOnChangeFile} />
+        <div style={inputStyle.container}>
+          <div style={inputStyle.title}>Cover</div>
+          <input
+            type="file"
+            name="cover"
+            onChange={handleOnChangeFile}
+            style={inputStyle.input}
+          />
           <div>
-            {!!cover ? <img src={cover} width="200" alt="preview" /> : ""}
+            {!!cover ? <img src={cover} width="200px" alt="preview" /> : ""}
           </div>
         </div>
 
-        <div>
-          <div>Introduccion</div>
+        <div style={inputStyle.container}>
+          <div style={inputStyle.title}>Introduccion</div>
           <input
             type="text"
             name="intro"
             onChange={handleChange}
             value={intro}
+            style={inputStyle.input}
           />
         </div>
 
-        <div>
-          <div>Completed</div>
+        <div style={inputStyle.container}>
+          <div style={inputStyle.title}>Completed</div>
           <input
             type="checkbox"
             name="completed"
             onChange={handleChange}
             value={completed}
+            style={inputStyle.input}
           />
         </div>
 
-        <div>
-          <div>Review</div>
+        <div style={inputStyle.container}>
+          <div style={inputStyle.title}>Review</div>
           <input
             type="text"
             name="review"
             onChange={handleChange}
             value={review}
+            style={inputStyle.input}
           />
         </div>
 
-        <input type="submit" value="Register book" />
+        <input type="submit" value="Register book" style={buttonStyle} />
       </form>
     </Layout>
   );
