@@ -1,4 +1,8 @@
 import React, { useState } from "react";
+import { useAppContext } from "../store/Store";
+
+//link nos permite generar un hipervinculo para navegar entre rutas
+import { Link } from "react-router-dom";
 
 function Create() {
   // estados de creación
@@ -8,6 +12,9 @@ function Create() {
   const [intro, setIntro] = useState("");
   const [completed, setCompleted] = useState(false);
   const [review, setReview] = useState("");
+
+  //llamamos desde store.jsx a la funcion para obtener el contexto
+  const store = useAppContext();
 
   function handleChange(e) {
     const name = e.target.name;
@@ -63,11 +70,15 @@ function Create() {
       review,
     };
 
-    //TODO: mandar a registrar el libro
+    //TODO: mandar a registrar el libro mediante el contexto "store"
+    store.createItem(newBook);
   };
 
   return (
     <div>
+      {/* usamos un hipervinculo para navegar a otra pagina sin perder lo que el
+      estado está guardando */}
+      <Link to="/">Home</Link>
       <form onSubmit={handleSubmit}>
         <div>
           <div>Title</div>

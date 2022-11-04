@@ -1,7 +1,7 @@
 //store va a tener toda la informacion para manejar de manera global
 import React, { createContext, useContext, useEffect, useState } from "react";
 
-// contexto
+// definición de nuestro contexto
 const AppContext = createContext({
   //   dentro del contexto definimos la estructura del estado que queremos manejar
   items: [],
@@ -42,3 +42,8 @@ const Store = ({ children }) => {
 };
 
 export default Store;
+
+//funcion para exportar nuestro hook
+export function useAppContext() {
+  return useContext(AppContext);
+}
